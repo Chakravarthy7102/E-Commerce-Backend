@@ -2,10 +2,26 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const connectDB = require("./db/mongoose");
+const UserRoute = require("./routes/usersRoute");
+const OrderRoute = require("./routes/orderRoute");
+const Cartroute = require("./routes/cartRoute");
+const ProductRoute = require("./routes/productRoute");
+const AuthRoute = require("./routes/auth");
 
 const PORT = process.env.PORT;
 
 app.use(express.json());
+
+//main route
+
+//login/register/route
+app.use("/api", AuthRoute);
+
+//order route
+
+//products route
+
+//cart Route
 
 const start = async () => {
   app.listen(PORT, () => {
