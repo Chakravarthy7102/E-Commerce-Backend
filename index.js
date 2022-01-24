@@ -13,15 +13,19 @@ const PORT = process.env.PORT;
 app.use(express.json());
 
 //main route
+app.use("/api/user", UserRoute);
 
 //login/register/route
 app.use("/api", AuthRoute);
 
 //order route
+// app.use("/api/order", OrderRoute);
 
 //products route
+// app.use("/api/products", ProductRoute);
 
 //cart Route
+// app.use("/api/cart", Cartroute);
 
 const start = async () => {
   app.listen(PORT, () => {
