@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 
+// JWT token verifiacation.
 const verifyToken = (req, res, next) => {
   const { token } = req.body;
   //verify token
@@ -22,6 +23,7 @@ const verifyToken = (req, res, next) => {
   }
 };
 
+// token verification for both the user and the admin these routes are basically common universally for valid users
 const verifyTokenAndUser = (req, res, next) => {
   verifyToken(req, res, () => {
     const user = req.user;
@@ -33,4 +35,16 @@ const verifyTokenAndUser = (req, res, next) => {
   });
 };
 
-module.exports = { verifyToken, verifyTokenAndUser };
+//verifies the user trying to acces the route is admin or not is yes admin is allowed to do stuff
+const verifyTokenIsAdmin = (req, res, next) => {
+  verifyToken(req, res, () => {
+    const user = req.user;
+    if (user.isAdmin) {
+      next();
+    } else {
+      res.status(403).json({ status: "error", msg: "Not authorized" });
+    }
+  });
+};
+
+module.exports = { verifyToken, verifyTokenAndUser, verifyTokenIsAdmin };
