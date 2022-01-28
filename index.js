@@ -19,13 +19,13 @@ app.use("/api/user", UserRoute);
 app.use("/api", AuthRoute);
 
 //order route
-// app.use("/api/order", OrderRoute);
+app.use("/api/order", OrderRoute);
 
 //products route
 app.use("/api/products", ProductRoute);
 
 //cart Route
-// app.use("/api/cart", Cartroute);
+app.use("/api/cart", Cartroute);
 
 const start = async () => {
   app.listen(PORT, () => {
