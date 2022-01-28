@@ -22,7 +22,7 @@ app.use("/api", AuthRoute);
 // app.use("/api/order", OrderRoute);
 
 //products route
-// app.use("/api/products", ProductRoute);
+app.use("/api/products", ProductRoute);
 
 //cart Route
 // app.use("/api/cart", Cartroute);

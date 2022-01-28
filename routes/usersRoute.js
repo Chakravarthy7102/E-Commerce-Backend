@@ -11,6 +11,7 @@ const {
   deleteUser,
   getAllUsers,
   getUser,
+  getUserStats,
 } = require("../controller/userController");
 
 router
@@ -19,6 +20,8 @@ router
   .delete(verifyTokenAndUser, deleteUser)
   .get(verifyTokenIsAdmin, getUser);
 
-router.route("/users").get(verifyTokenIsAdmin, getAllUsers);
+router.route("/").get(verifyTokenIsAdmin, getAllUsers);
+
+router.route("/stats").get(verifyTokenIsAdmin, getUserStats);
 
 module.exports = router;
